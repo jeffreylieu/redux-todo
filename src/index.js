@@ -5,10 +5,14 @@ import App from './components/app';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-import reduxPromise from 'redux-promise';
+import logger from './middleware/logger';
+import promise from './middleware/promise';
 
 
-const store = createStore(rootReducer, {}, applyMiddleware(reduxPromise));
+
+
+
+const store = createStore(rootReducer, {}, applyMiddleware(logger, promise));
 
 ReactDOM.render(
     <Provider store={store}>
