@@ -3,6 +3,10 @@ import axios from 'axios';
 const BASE_URL = "http://api.reactprototypes.com";
 const API_KEY = '?key=blabbermouth';
 
+
+
+
+
 export function getData(){
     const response = axios.get(`${BASE_URL}/todos${API_KEY}`);
 
@@ -17,6 +21,15 @@ export function sendTodoItem(item){
 
     return {
         type: types.ADD_ITEM,
+        payload: response
+    }
+}
+
+export function getSingleItem(id){
+    const response = axios.get(`${BASE_URL}/todos/${id}${API_KEY}`);
+
+    return{
+        type: types.VIEW_ITEM,
         payload: response
     }
 }
